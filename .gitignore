@@ -1,0 +1,42 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- secrets ---
+.env
+*.key
+*token*
+
+# --- third-party material that must NOT be committed ---
+ASSERT/
+SafeText/
+
+# --- run outputs: large, regenerable, contain generated unsafe text ---
+runs/
+outputs*/
+*.jsonl
+llm_cache*
+*.log
+*.zip
+drive/
+
+# --- private files (emails, correspondence): keep them OUTSIDE the repo folder; this is a safety net ---
+private/
+*.eml
+*.msg
+*correspondence*
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
+.idea/
+
+# --- keep the small, publishable summaries ---
+!results/**/*.md
+!results/**/*.json
+!results/**/*.csv

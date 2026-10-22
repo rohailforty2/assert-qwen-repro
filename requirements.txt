@@ -1,0 +1,6 @@
+# Core runtime (the offline smoke test needs only these).
+# Exact versions used by a run are recorded in results/<run-id>/manifest.json.
+openai>=1.0
+numpy>=1.24
+# vLLM is installed inside the Colab notebook (it needs the GPU runtime):
+#   pip install vllm
