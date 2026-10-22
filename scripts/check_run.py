@@ -45,7 +45,7 @@ def main(out: str, partial: bool) -> int:
         if len(gl) != len(el):
             fails.append(f"{g} vs {e}: {len(gl)} != {len(el)}")
         if uniq != len(el):
-            fails.append(f"{e}: {len(el) - uniq} duplicated records (double launch?)")
+            fails.append(f"{e}: {len(el) - uniq} duplicated records (double launch, or the model repeated/emitted a junk item: inspect them)")
 
     for n in ["baseline_safe", "baseline_unsafe"] + [e for _, e in PAIRS]:
         if exists(n):

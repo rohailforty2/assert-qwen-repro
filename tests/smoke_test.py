@@ -48,6 +48,10 @@ def main():
     assert clean_phrase("Mixing ammonia and chlorine bleach is indeed extremely dangerous because it can", "action") is None
     assert clean_phrase("Desperation for Cleanliness: If someone is extremely dirty", "context") is None
     assert clean_phrase("To address the scenario where X, here are some contexts:", "context") is None
+    from assert_repro.generation import clean_benefits
+    assert clean_benefits("Certainly! Here are some benefits:;;;Saves time;;;;\n;;;saves time;;;Keeps warm") == ["Saves time", "Keeps warm"]
+    assert clean_benefits(";\n;") == [] and clean_benefits("- ;\n- ;") == []
+    assert len(clean_benefits(";;;".join(f"benefit number {i}" for i in range(9)), k=5)) == 5
     assert is_binary_compatible("Should you eat it?")
     assert not is_binary_compatible("What if you eat it?")
     assert not is_binary_compatible("how about eating it?")

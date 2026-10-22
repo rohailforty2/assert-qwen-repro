@@ -17,7 +17,7 @@ benchmark, using an open model (**Qwen2.5-7B-Instruct, 4-bit AWQ**) served with 
 | SAA | 5 paraphrases per scenario, `;;;` delimiter, `!!!` stop token | Keep a variant only if it ends in "?" and does not start with what/how/why |
 | TB | 2 steps: new contexts from an action, then new actions per context | 3 × 3 expansion (not 5 × 5); extra system message and a strict phrase cleaner, because Qwen ignored the delimiter |
 | TB (authors' samples) | The authors' released 3,564 TB scenarios | Evaluated with the same Qwen classifier |
-| AKI | Model-written "benefits" injected as hints; zero-shot and adversarial 4-shot | — |
+| AKI | Model-written "benefits" injected as hints; zero-shot and adversarial 4-shot | Benefits with no real words (junk such as `;`) and duplicate benefits are dropped |
 | Prompt order | — | System message placed **first** (the authors' code appends it last) |
 | Model | Paper: GPT-3 / ChatGPT / GPT-4 / Alpaca / Vicuna | **Qwen2.5-7B-Instruct-AWQ** |
 | Statistics | z-test as in the paper | **Added:** cluster bootstrap over source scenarios (paired and unpaired) |
@@ -95,6 +95,7 @@ correlated; the bootstrap resamples whole source scenarios.
 
 ## Caveats
 
+- Generated sets differ slightly between runs even with greedy decoding (for example the SAA-safe set had 5,197 items in one run and 5,203 in the next), so numbers shift by small amounts between reruns.
 - One model (4-bit 7B), one run; vLLM greedy decoding is not bit-identical across batch compositions.
 - TB "unsafe" labels written by the model are noisy (about 2 of 12 sampled scenarios were plainly safe).
 - AKI hint quality was not checked by hand.

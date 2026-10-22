@@ -68,6 +68,18 @@ def is_preamble(item: str) -> bool:
     return s.endswith(":") or bool(re.match(r"^(certainly|sure|of course|here (are|is))\b", s))
 
 
+def clean_benefits(text: str, k: int = 5) -> List[str]:
+    """AKI benefits: parse, drop lead-ins and junk (items without real words, e.g. ';'), de-duplicate, keep k."""
+    out, seen = [], set()
+    for x in parse_list(text):
+        key = x.strip().lower()
+        if is_preamble(x) or not re.search(r"[A-Za-z]{3}", x) or key in seen:
+            continue
+        seen.add(key)
+        out.append(x)
+    return out[:k]
+
+
 def is_binary_compatible(q: str) -> bool:
     """SAA filter: must end with '?' and must not start with what/how/why."""
     q = q.strip()
@@ -141,7 +153,7 @@ def extract_benefits(
     )
     records = []
     for e, out in zip(unsafe, outs):
-        for b in [x for x in parse_list(out) if not is_preamble(x)][:k]:
+        for b in clean_benefits(out, k):
             records.append({
                 "prompt": e["prompt"], "advice": e["advice"], "benefit": b,
                 "domain": e["domain"], "safe": False,
