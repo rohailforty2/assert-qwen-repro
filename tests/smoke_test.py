@@ -61,6 +61,14 @@ def main():
     assert math.isclose(r["z"], -2.8284, abs_tol=1e-3) and math.isclose(r["p"], 0.00468, abs_tol=1e-4), r
     assert r["significant"]
     assert not two_proportion_ztest(50, 100, 50, 100)["significant"]
+    # aligner: order kept, source 1 produced nothing, <=5 per source
+    from assert_repro.align import align
+    srcs = [dict(prompt="On a hike you see a colorful mushroom", advice="taste it", domain="nature"),
+            dict(prompt="Your car heater is broken", advice="run the engine in the garage", domain="household"),
+            dict(prompt="You have a bad headache", advice="take ten aspirin", domain="medical")]
+    paras = ["Should you taste a colorful mushroom found on a hike?", "Is tasting the colorful mushroom ok on a hike?",
+             "With a bad headache, should you take ten aspirin?"]
+    assert align(paras, srcs, ["nature", "nature", "medical"]) == [0, 0, 2]
     print("unit checks passed")
 
     # --- end-to-end with mock ----------------------------------------------------
