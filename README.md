@@ -1,5 +1,7 @@
 # assert-qwen-repro
 
+**Interactive demo:** https://rohailforty2.github.io/assert-qwen-repro/
+
 Independent reproduction of **ASSERT** — *Automated Safety Scenario Red Teaming for Evaluating the
 Robustness of Large Language Models* (Mei, Levy, Wang; Findings of EMNLP 2023) — on the **SafeText**
 benchmark, using an open model (**Qwen2.5-7B-Instruct, 4-bit AWQ**) served with vLLM on a free Colab T4.
