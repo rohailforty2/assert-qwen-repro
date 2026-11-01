@@ -15,6 +15,17 @@ keywords:
   - reproducibility
   - SafeText
   - ASSERT
+preferred-citation:
+  type: article
+  title: "Re-examining ASSERT: An Open-Model Replication and a Scenario-Level Re-analysis of Released Outputs"
+  authors:
+    - family-names: "Ahmad"
+      given-names: "Rohail"
+  year: 2026
+  publisher:
+    name: "Zenodo"
+  doi: "10.5281/zenodo.23863456"
+  url: "https://doi.org/10.5281/zenodo.23863456"
 references:
   - type: conference-paper
     title: "ASSERT: Automated Safety Scenario Red Teaming for Evaluating the Robustness of Large Language Models"
