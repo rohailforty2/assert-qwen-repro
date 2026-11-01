@@ -7,6 +7,9 @@ Robustness of Large Language Models* (Mei, Levy, Wang; Findings of EMNLP 2023) â
 benchmark, using an open model (**Qwen2.5-7B-Instruct, 4-bit AWQ**) served with vLLM on a free Colab T4.
 
 > **Status: v0.1.** Code, tests, documentation, Colab notebook and one clean run (`results/run1-clean/`).
+>
+> **Interactive demo:** https://rohailforty2.github.io/assert-qwen-repro/ (exact prompts and recorded answers, all five models, live bootstrap).
+> **Paper:** [`paper/assert_reexamined.pdf`](paper/assert_reexamined.pdf).
 > Not affiliated with the ASSERT authors, the SafeText authors or the Qwen team.
 
 ## What is reproduced, and what is adapted
